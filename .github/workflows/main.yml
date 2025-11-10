@@ -19,8 +19,21 @@ jobs:
     - name: Instalando dependencias
       run: npm install
 
-    - name: Executando os testes
-      run: npx cypress run
-      
+    #executa os testes do Cypress (com relatório mochawesome)
+    - name: Executando os testes E2E
+      run: npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome,overwrite=false,html=false,json=true
+
+    #gerar o relatório HTML final (usando mochawesome-merge + marge)
+    - name: Gerar relatório HTML do Mochawesome
+      run: |
+        npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/report.json
+        npx marge cypress/reports/report.json --reportDir cypress/reports/html
+
+    #upload do relatório como artefato do GitHub Actions
+    - name: Publicar relatório Mochawesome
+      uses: actions/upload-artifact@v4
+      with:
+        name: mochawesome-report
+        path: cypress/reports/html
 
   
