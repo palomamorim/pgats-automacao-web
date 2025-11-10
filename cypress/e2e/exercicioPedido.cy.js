@@ -17,7 +17,7 @@ describe('Automation Exercise', () => {
         cy.preencherFormularioCadastro();
 
         cy.adicionarProdutoCarrinho();
-        //cy.excluirCadastro();
+        cy.excluirCadastro();
 
 
 

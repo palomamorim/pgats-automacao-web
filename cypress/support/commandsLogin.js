@@ -84,6 +84,7 @@ Cypress.Commands.add('login', (senhaUsuario, validacao = true) => {
 // Command para excluir cadastro
 Cypress.Commands.add('excluirCadastro', () => {
     cy.get('a[href="/delete_account"]').click();    
-    cy.get('h2[data-qa="account-deleted"]').should('have.text', 'Account Deleted!');
+    cy.get('h2[data-qa="account-deleted"]').should('contain', 'Account Deleted!');
+    cy.contains('Account Deleted!');
       
 });

@@ -78,10 +78,9 @@ Cypress.Commands.add('adicionarProdutoCarrinho', () => {
         cy.get('input[data-qa="cvc"]').type('989');
         cy.get('input[data-qa="expiry-month"]').type('01');
         cy.get('input[data-qa="expiry-year"]').type('2033');    
-        cy.get('button[data-qa="pay-button"]').click();
-    
-       // cy.get('.alert-success alert').should('contain', 'Your order has been placed successfully!');
-        cy.contains('Congratulations! Your order has been confirmed!').should('be.visible')
+        cy.get('button[data-qa="pay-button"]').click();    
+       
+        cy.contains('Congratulations! Your order has been confirmed!').should('be.visible');
     });
     
 })

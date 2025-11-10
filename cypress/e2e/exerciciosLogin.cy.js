@@ -12,7 +12,7 @@ describe('Automation Exercise', () => {
 
     });  
 
-    it.only('Teste 2 - Login de usuário com e-mail e senha corretos', () => {
+    it('Teste 2 - Login de usuário com e-mail e senha corretos', () => {
         cy.fixture("elementosLogin.json").then((el) => {
             const senhaCorreta = el.camposCadastroUsuario.senhaUsuario;
 
