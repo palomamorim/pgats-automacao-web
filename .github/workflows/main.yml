@@ -1,0 +1,26 @@
+name: PGATS - Automação de Testes Web
+
+on:
+  workflow_dispatch:
+
+jobs:
+  e2e-tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    #clone projeto
+    - uses: actions/checkout@v4
+
+    #conversão node instalado
+    - name: Node version
+      run: node --version
+
+    - name: Instalando dependencias
+      run: npm install
+
+    - name: Executando os testes
+      run: npx cypress run
+      
+
+  
