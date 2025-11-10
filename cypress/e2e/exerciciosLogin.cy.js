@@ -15,24 +15,27 @@ describe('Automation Exercise', () => {
     it('Teste 2 - Login de usuário com e-mail e senha corretos', () => {
         cy.fixture("elementosLogin.json").then((el) => {
             const senhaCorreta = el.camposCadastroUsuario.senhaUsuario;
+            const emailUsuario = el.camposCadastroUsuario.emailUsuario;
 
-            cy.login(senhaCorreta, true);   
+            cy.login(emailUsuario, senhaCorreta, true);   
         });              
     });
 
     it('Teste 3 - Login de usuário com e-mail e senha incorretos', () => {
         cy.fixture("elementosLogin.json").then((el) => {
             const senhaInvalida = el.camposCadastroUsuario.senhaInvalidaUsuario;
+            const emailUsuario = el.camposCadastroUsuario.emailUsuario;
 
-            cy.login(senhaInvalida, false);   
+            cy.login(emailUsuario, senhaInvalida, false);   
         });
     })
 
     it('Teste 4 - Logout de usuário', () => { 
         cy.fixture("elementosLogin.json").then((el) => {
             const senhaCorreta = el.camposCadastroUsuario.senhaUsuario;
+            const emailUsuario = el.camposCadastroUsuario.emailUsuario;
             
-            cy.login(senhaCorreta, true);
+            cy.login(emailUsuario, senhaCorreta, true);
             cy.wait(2000);
             
             //logout

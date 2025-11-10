@@ -14,6 +14,7 @@ describe('Automation Exercise', () => {
     it('Teste 15 - Cadastro de usuário', () => {  
         //Criar conta e valida nome usuário
         cy.loginDeCadastro();
+      //   cy.login(emailUsuario, senhaCorreta, true); 
         cy.preencherFormularioCadastro();
 
         cy.adicionarProdutoCarrinho();

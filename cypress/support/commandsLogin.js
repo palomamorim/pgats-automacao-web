@@ -62,10 +62,10 @@ Cypress.Commands.add('preencherFormularioCadastro', () => {
 });
 
 // Command para login do usuário
-Cypress.Commands.add('login', (senhaUsuario, validacao = true) => {
+Cypress.Commands.add('login', (emailUsuario, senhaUsuario, validacao = true) => {
     cy.fixture("elementosLogin.json").then((el) => {
 
-        cy.get('[data-qa="login-email"]').type(el.camposCadastroUsuario.emailUsuario);
+        cy.get('[data-qa="login-email"]').type(emailUsuario);
         cy.get('[data-qa="login-password"]').type(senhaUsuario);
 
         cy.get('[data-qa="login-button"').click();
@@ -75,8 +75,8 @@ Cypress.Commands.add('login', (senhaUsuario, validacao = true) => {
             cy.get('.login-form > form > p').should('contain', 'Your email or password is incorrect!'); 
 
         } else {
-            cy.get('i.fa-user').parent().should('contain', el.camposCadastroUsuario.nomeUsuario);
-            cy.contains('b', el.camposCadastroUsuario.nomeUsuario);  
+            cy.get('i.fa-user').parent().should('contain', el.camposCadastroUsuario.primeiroNome);
+            cy.contains('b', el.camposCadastroUsuario.primeiroNome);  
         }
     });    
 })
